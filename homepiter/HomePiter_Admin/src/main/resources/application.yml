@@ -1,0 +1,11 @@
+server:
+  port: 8082  # 충돌 안 나게 설정 (서비스마다 다르게)
+
+spring:
+  application:
+    name: admin-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

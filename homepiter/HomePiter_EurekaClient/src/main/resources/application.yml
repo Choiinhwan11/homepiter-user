@@ -1,0 +1,13 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    prefer-ip-address: true  # IP 기반 등록
+  client:
+    register-with-eureka: false
+    fetch-registry: false

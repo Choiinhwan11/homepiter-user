@@ -1,0 +1,22 @@
+rootProject.name = 'homepiter'
+
+include 'HomePiter_gatway'
+project(':HomePiter_gatway').projectDir = file('HomePiter_gatway')
+
+include 'HomePiter_Coommons'
+project(':HomePiter_Coommons').projectDir = file('HomePiter_Coommons')
+
+include 'HomePiter_EurekaClient'
+project(':HomePiter_EurekaClient').projectDir = file('HomePiter_EurekaClient')
+
+include 'HomePiter_User'
+project(':HomePiter_User').projectDir = file('HomePiter_User')
+
+include 'HomePiter_Business'
+project(':HomePiter_Business').projectDir = file('HomePiter_Business')
+
+include 'HomePiter_Chat'
+project(':HomePiter_Chat').projectDir = file('HomePiter_Chat')
+
+include 'HomePiter_Admin'
+project(':HomePiter_Admin').projectDir = file('HomePiter_Admin')
