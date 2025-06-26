@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+    plugins {
+        id 'org.springframework.boot' version '3.3.0'
+        id 'io.spring.dependency-management' version '1.1.7'
+    }
+}
+
+rootProject.name = 'homepiter'
+
+includeBuild '../HomePiter_Admin'
+includeBuild '../HomePiter_Coommons'
+include ':HomePiter_User'
