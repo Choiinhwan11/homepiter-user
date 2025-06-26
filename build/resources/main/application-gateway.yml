@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: database, mail, jwt, eureka, gateway
+  config:
+    import: optional:file:./user.env[.properties]
+
+server:
+  port: 8080  # Gateway 서버 포트
+
+logging:
+  level:
+    root: INFO
+    org.springframework: WARN
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    enable:
+      all: true

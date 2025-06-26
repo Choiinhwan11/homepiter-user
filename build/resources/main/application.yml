@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: database, mail, jwt, eureka, gateway  # 환경별 활성화할 yml 설정
+
+  config:
+    import:
+      - classpath:application-database.yml
+      - classpath:application-mail.yml
+      - classpath:application-jwt.yml
+      - classpath:application-eureka.yml
+      - classpath:application-gateway.yml
