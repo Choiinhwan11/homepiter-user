@@ -1,7 +1,7 @@
 package com.homepiter.gateway.config.security;
 
+import com.homepiter.gateway.config.security.JwtTokenProvider;
 import io.jsonwebtoken.Claims;
-import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
@@ -14,10 +14,14 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 @Component
-@RequiredArgsConstructor
 public class JwtAuthFilter extends AbstractGatewayFilterFactory<JwtAuthFilter.Config> {
 
     private final JwtTokenProvider jwtTokenProvider;
+
+    public JwtAuthFilter(JwtTokenProvider jwtTokenProvider) {
+        super(Config.class); // ✅ 필수
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
 
     @Override
     public GatewayFilter apply(Config config) {
@@ -46,7 +50,9 @@ public class JwtAuthFilter extends AbstractGatewayFilterFactory<JwtAuthFilter.Co
         Claims claims = jwtTokenProvider.parseToken(token);
         ServerHttpRequest modifiedRequest = exchange.getRequest().mutate()
                 .header("X-User-Email", claims.getSubject())
-                .header("X-User-Role", claims.get("roles").toString()) // 역할(Role) 전달
+                .header("X-User-Role", claims.get("roles").toString())
+                .header("X-User-Id", claims.get("id").toString())
+                .header("X-User-Nickname", claims.get("nickname").toString())
                 .build();
 
         return chain.filter(exchange.mutate().request(modifiedRequest).build());

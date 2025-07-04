@@ -2,12 +2,12 @@ package com.homepiter.gateway.config.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Base64;
-import java.util.Date;
 import java.util.logging.Logger;
 
 @Component
@@ -23,7 +23,7 @@ public class JwtTokenProvider {
 
     private Key secretKey;
 
-    @jakarta.annotation.PostConstruct
+    @PostConstruct
     protected void init() {
         byte[] keyBytes = Base64.getDecoder().decode(secretKeyBase64);
         this.secretKey = Keys.hmacShaKeyFor(keyBytes);
@@ -35,6 +35,7 @@ public class JwtTokenProvider {
             return true;
         } catch (JwtException e) {
             logger.warning("Invalid JWT: " + e.getMessage());
+
         }
         return false;
     }

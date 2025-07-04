@@ -2,6 +2,9 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: gateway-service
+
   cloud:
     gateway:
       globalcors:
@@ -24,18 +27,48 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/users/**
+          filters:
+            - name: JwtAuthFilter
 
         - id: admin-service
           uri: lb://admin-service
           predicates:
             - Path=/api/admin/**
+          filters:
+            - name: JwtAuthFilter
+            - name: RoleFilter
+              args:
+                requiredRole: "ROLE_ADMIN"
 
         - id: chat-service
           uri: lb://chat-service
           predicates:
             - Path=/api/chat/**
+          filters:
+            - name: JwtAuthFilter
 
         - id: business-service
           uri: lb://business-service
           predicates:
             - Path=/business/**
+          filters:
+            - name: JwtAuthFilter
+
+  config:
+    import: optional:file:.env[.properties]
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+jwt:
+  secret: YjM2ZTBkZTU2NTYzOTQ0MjAwY2I1ZWI1NTYzNzA5MjQyNTUzZDZjNjVkMDAzNGU3
+  expiration: 3600000
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: DEBUG
