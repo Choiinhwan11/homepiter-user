@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/HomePiter_Admin" />
+            <option value="$PROJECT_DIR$/HomePiter_Business" />
+            <option value="$PROJECT_DIR$/HomePiter_Chat" />
+            <option value="$PROJECT_DIR$/HomePiter_Coommons" />
+            <option value="$PROJECT_DIR$/HomePiter_EurekaClient" />
+            <option value="$PROJECT_DIR$/HomePiter_User" />
+            <option value="$PROJECT_DIR$/HomePiter_gatway" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
