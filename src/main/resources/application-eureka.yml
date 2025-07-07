@@ -2,5 +2,9 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+<<<<<<< HEAD:src/main/resources/application-eureka.yml
     registerWithEureka: true
     fetchRegistry: true
+=======
+
+>>>>>>> bb3f9ec ( dix):homepiter/HomePiter_Coommons/src/main/resources/application.yml
